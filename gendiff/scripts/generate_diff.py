@@ -4,6 +4,7 @@ first_file = json.load(open('gendiff/scripts/file1.json'))
 second_file = json.load(open('gendiff/scripts/file2.json'))
 output = []
 
+
 def generate_difference(first_filepath, second_filepath):
     first_file = json.load(open(first_filepath))
     second_file = json.load(open(second_filepath))
@@ -22,8 +23,8 @@ def generate_difference(first_filepath, second_filepath):
             if i not in first_file:
                 output.append(("+", i + ":", str(second_file[i]).lower()))
 
-    
-    sorted_output = sorted(set(output), key = lambda element: element[0], reverse = True)
-    sorted_output.sort(key = lambda element: element[1])
+    sorted_output = sorted(set(output), key=lambda element: element[0],
+                            reverse=True)
+    sorted_output.sort(key=lambda element: element[1])
       
     return "{\n" + "\n".join([" ".join(i) for i in sorted_output]) + "\n}"
