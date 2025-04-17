@@ -1,13 +1,5 @@
-import json
-
-first_file = json.load(open('gendiff/scripts/file1.json'))
-second_file = json.load(open('gendiff/scripts/file2.json'))
-output = []
-
-
-def generate_difference(first_filepath, second_filepath):
-    first_file = json.load(open(first_filepath))
-    second_file = json.load(open(second_filepath))
+def generate_difference(first_file, second_file):
+    output = []
 
     for key in first_file.keys():
         if key in second_file:
