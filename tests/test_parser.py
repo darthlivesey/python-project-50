@@ -17,3 +17,15 @@ def test_parse_files():
 
     assert parse_files("tests/test_data/file1.json",
     "tests/test_data/file2.yaml") == (first_file, second_file)
+
+    assert parse_files("tests/test_data/file2.json",
+    "tests/test_data/file1.json") == (second_file, first_file)
+
+    assert parse_files("tests/test_data/file2.yaml",
+    "tests/test_data/file1.yaml") == (second_file, first_file)
+
+    assert parse_files("tests/test_data/file2.yaml",
+    "tests/test_data/file1.json") == (second_file, first_file)
+
+    assert parse_files("tests/test_data/file2.json",
+    "tests/test_data/file1.yaml") == (second_file, first_file)
