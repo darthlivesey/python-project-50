@@ -41,12 +41,8 @@ def generate_difference(first_file: dict,
 
         for key in second_file.keys():
             if key not in first_file.keys():
-                if type(second_file[key]) is not dict:
-                    output.append(
-                        ["  +", key + ":", converter(second_file[key])])
-                else:
-                    output.append(
-                        ["  +", key + ":", converter(second_file[key])])
+                output.append(
+                    ["  +", key + ":", converter(second_file[key])])
 
     return output
 
