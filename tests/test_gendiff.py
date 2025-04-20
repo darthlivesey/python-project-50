@@ -1,4 +1,10 @@
-from gendiff.scripts.generate_diff import main, generate_difference, converter, sort_output, generate_view
+from gendiff.scripts.generate_diff import (
+  converter,
+  generate_difference,
+  generate_view,
+  main,
+  sort_output,
+)
 
 short_result = """{
   - follow: false
@@ -91,19 +97,26 @@ sort_short_result = [['  -', 'follow:', 'false'],
                             ['  +', 'timeout:', '20'],
                               ['  +', 'verbose:', 'true']]
 
-def test_main():
-  assert main(first_long_file, second_long_file) == long_result
 
-  assert main(first_short_file, second_short_file) == short_result
+def test_main():
+    assert main(first_long_file, second_long_file) == long_result
+
+    assert main(first_short_file, second_short_file) == short_result
+
 
 def test_generate_difference():
-  assert generate_difference(first_short_file, second_short_file) == gendiff_short_result
+    assert generate_difference(first_short_file,
+                                second_short_file) == gendiff_short_result
+
 
 def test_sort_output():
-  assert sort_output(gendiff_short_result) == sort_short_result
+    assert sort_output(gendiff_short_result) == sort_short_result
+
 
 def test_converter():
-  assert converter({"id" : {"value" : 45}}) == [['   ', 'id:', [['   ', 'value:', '45']]]]
+    assert converter({"id": {"value": 45}}) == [
+        ['   ', 'id:', [['   ', 'value:', '45']]]]
+
 
 def test_generate_view():
-  assert generate_view(sort_short_result) == short_result
+    assert generate_view(sort_short_result) == short_result
