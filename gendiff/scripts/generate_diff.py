@@ -1,10 +1,17 @@
-def main(first_file, second_file):
-    return generate_view(sort_output(generate_difference(
-        first_file, second_file, format_name="stylish")))
+from gendiff.scripts.generate_plain_view import generate_plain_view
+from gendiff.scripts.generate_stylish_view import generate_stylish_view
 
 
-def generate_difference(first_file: dict,
-                         second_file: dict, format_name="stylish"):
+def main(first_file, second_file, format_name):
+    sorted_output = sort_output(generate_difference(
+        first_file, second_file))
+    if format_name == "stylish":
+        return generate_stylish_view(sorted_output)
+    elif format_name == "plain":
+        return generate_plain_view(sorted_output)
+
+
+def generate_difference(first_file: dict, second_file: dict):
     output = []
 
     for key in first_file.keys():
@@ -83,14 +90,17 @@ def sort_output(input):
     return unique_list
 
 
-def generate_view(input, deep=0):
-    result_string = "{\n"
-    for element in input:
-        if type(element[2]) is str:
-            result_string += deep * "    " + " ".join(element) + "\n"
-        else:
-            result_string += deep * "    " + (
-                f"{element[0]} {element[1]} " 
-                f"{generate_view(element[2], (deep + 1))}") + "\n"
+first_long_file = {'common': {
+    'setting1': 'Value 1', 'setting2': 200, 'setting3': True, 'setting6': {
+        'key': 'value', 'doge': {'wow': ''}}}, 'group1': {
+            'baz': 'bas', 'foo': 'bar', 'nest': {
+                'key': 'value'}}, 'group2': {'abc': 12345, 'deep': {'id': 45}}}
 
-    return result_string + deep * "    " + "}"
+second_long_file = {'common': {
+    'follow': False, 'setting1': 'Value 1',
+      'setting3': None, 'setting4': 'blah blah', 'setting5': {
+          'key5': 'value5'}, 'setting6': {
+              'key': 'value', 'ops': 'vops', 'doge': {
+                'wow': 'so much'}}}, 'group1': {
+                    'foo': 'bar', 'baz': 'bars', 'nest': 'str'},
+                      'group3': {'deep': {'id': {'number': 45}}, 'fee': 100500}}
