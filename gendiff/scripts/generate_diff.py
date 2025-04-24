@@ -1,3 +1,6 @@
+import json
+
+from gendiff.scripts.generate_json_view import generate_json_view
 from gendiff.scripts.generate_plain_view import generate_plain_view
 from gendiff.scripts.generate_stylish_view import generate_stylish_view
 
@@ -9,6 +12,10 @@ def main(first_file, second_file, format_name):
         return generate_stylish_view(sorted_output)
     elif format_name == "plain":
         return generate_plain_view(sorted_output)
+    elif format_name == "json":
+        with open("json_format_result.json", "w") as jr:
+            json.dump(generate_json_view(sorted_output), jr)
+        return generate_json_view(sorted_output)
 
 
 def generate_difference(first_file: dict, second_file: dict):
@@ -88,19 +95,3 @@ def sort_output(input):
     unique_list.sort(key=lambda element: element[0], reverse=True)
     unique_list.sort(key=lambda element: element[1])
     return unique_list
-
-
-first_long_file = {'common': {
-    'setting1': 'Value 1', 'setting2': 200, 'setting3': True, 'setting6': {
-        'key': 'value', 'doge': {'wow': ''}}}, 'group1': {
-            'baz': 'bas', 'foo': 'bar', 'nest': {
-                'key': 'value'}}, 'group2': {'abc': 12345, 'deep': {'id': 45}}}
-
-second_long_file = {'common': {
-    'follow': False, 'setting1': 'Value 1',
-      'setting3': None, 'setting4': 'blah blah', 'setting5': {
-          'key5': 'value5'}, 'setting6': {
-              'key': 'value', 'ops': 'vops', 'doge': {
-                'wow': 'so much'}}}, 'group1': {
-                    'foo': 'bar', 'baz': 'bars', 'nest': 'str'},
-                      'group3': {'deep': {'id': {'number': 45}}, 'fee': 100500}}

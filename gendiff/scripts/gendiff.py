@@ -9,7 +9,7 @@ def main():
         description='Compares two configuration files and shows a difference.'
     )
     parser.add_argument("-f", "--format", help="set format of output", choices=[
-        "plain", "stylish"], default="stylish")
+        "plain", "stylish", "json"], default="stylish")
     parser.add_argument("first_file")
     parser.add_argument("second_file")
     args = parser.parse_args()
@@ -17,5 +17,3 @@ def main():
     first_file, second_file = parse_files(args.first_file, args.second_file)
     result = generate_difference(first_file, second_file, args.format)
     print(result)
-
-    

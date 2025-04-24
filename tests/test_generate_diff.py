@@ -5,42 +5,57 @@ from gendiff.scripts.generate_diff import (
     sort_output,
 )
 from tests.test_data.test_values import (
-    first_long_file,
-    first_short_file,
-    gendiff_long_result,
-    gendiff_short_result,
-    long_sorted_output,
-    plain_long_result,
-    plain_short_result,
-    second_long_file,
-    second_short_file,
-    short_sorted_output,
-    stylish_long_result,
-    stylish_short_result,
+    FIRST_LONG_FILE,
+    FIRST_SHORT_FILE,
+    GENDIFF_LONG_RESULT,
+    GENDIFF_SHORT_RESULT,
+    LONG_SORTED_OUTPUT,
+    PLAIN_LONG_RESULT,
+    PLAIN_SHORT_RESULT,
+    SECOND_LONG_FILE,
+    SECOND_SHORT_FILE,
+    SHORT_SORTED_OUTPUT,
+    STYLISH_LONG_RESULT,
+    STYLISH_SHORT_RESULT,
 )
 
 
-def test_main():
-    assert main(first_long_file, second_long_file,
-                 "stylish") == stylish_long_result
-    assert main(first_short_file, second_short_file,
-                 "stylish") == stylish_short_result
-    assert main(first_long_file, second_long_file,
-                 "plain") == plain_long_result
-    assert main(first_short_file, second_short_file,
-                 "plain") == plain_short_result
+def test_main_stylish_long():
+    assert main(FIRST_LONG_FILE, SECOND_LONG_FILE,
+                 "stylish") == STYLISH_LONG_RESULT
+    
+
+def test_main_stylish_short():
+    assert main(FIRST_SHORT_FILE, SECOND_SHORT_FILE,
+                 "stylish") == STYLISH_SHORT_RESULT
+    
+
+def test_main_plain_long():
+    assert main(FIRST_LONG_FILE, SECOND_LONG_FILE,
+                 "plain") == PLAIN_LONG_RESULT
+    
+
+def test_main_plain_short():
+    assert main(FIRST_SHORT_FILE, SECOND_SHORT_FILE,
+                 "plain") == PLAIN_SHORT_RESULT
 
 
-def test_generate_difference():
-    assert generate_difference(first_short_file,
-                                second_short_file) == gendiff_short_result
-    assert generate_difference(first_long_file,
-                                second_long_file) == gendiff_long_result
+def test_generate_difference_short():
+    assert generate_difference(FIRST_SHORT_FILE,
+                                SECOND_SHORT_FILE) == GENDIFF_SHORT_RESULT
+    
+
+def test_generate_difference_long():
+    assert generate_difference(FIRST_LONG_FILE,
+                                SECOND_LONG_FILE) == GENDIFF_LONG_RESULT
 
 
-def test_sort_output():
-    assert sort_output(gendiff_short_result) == short_sorted_output
-    assert sort_output(gendiff_long_result) == long_sorted_output
+def test_sort_output_short():
+    assert sort_output(GENDIFF_SHORT_RESULT) == SHORT_SORTED_OUTPUT
+
+
+def test_sort_output_long():
+    assert sort_output(GENDIFF_LONG_RESULT) == LONG_SORTED_OUTPUT
 
 
 def test_converter():
