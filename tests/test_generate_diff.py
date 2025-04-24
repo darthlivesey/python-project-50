@@ -1,7 +1,7 @@
 from gendiff.scripts.generate_diff import (
     converter,
+    generate_diff,
     generate_difference,
-    main,
     sort_output,
 )
 from tests.test_data.test_values import (
@@ -21,22 +21,22 @@ from tests.test_data.test_values import (
 
 
 def test_main_stylish_long():
-    assert main(FIRST_LONG_FILE, SECOND_LONG_FILE,
+    assert generate_diff(FIRST_LONG_FILE, SECOND_LONG_FILE,
                  "stylish") == STYLISH_LONG_RESULT
     
 
 def test_main_stylish_short():
-    assert main(FIRST_SHORT_FILE, SECOND_SHORT_FILE,
+    assert generate_diff(FIRST_SHORT_FILE, SECOND_SHORT_FILE,
                  "stylish") == STYLISH_SHORT_RESULT
     
 
 def test_main_plain_long():
-    assert main(FIRST_LONG_FILE, SECOND_LONG_FILE,
+    assert generate_diff(FIRST_LONG_FILE, SECOND_LONG_FILE,
                  "plain") == PLAIN_LONG_RESULT
     
 
 def test_main_plain_short():
-    assert main(FIRST_SHORT_FILE, SECOND_SHORT_FILE,
+    assert generate_diff(FIRST_SHORT_FILE, SECOND_SHORT_FILE,
                  "plain") == PLAIN_SHORT_RESULT
 
 
