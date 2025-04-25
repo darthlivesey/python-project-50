@@ -1,8 +1,8 @@
 import json
 
-from gendiff.scripts.generate_json_view import generate_json_view
-from gendiff.scripts.generate_plain_view import generate_plain_view
-from gendiff.scripts.generate_stylish_view import generate_stylish_view
+from .generate_json_view import generate_json_view
+from .generate_plain_view import generate_plain_view
+from .generate_stylish_view import generate_stylish_view
 
 
 def generate_diff(first_file, second_file, format_name):
