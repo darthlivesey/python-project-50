@@ -5,7 +5,7 @@ from .generate_plain_view import generate_plain_view
 from .generate_stylish_view import generate_stylish_view
 
 
-def generate_diff(first_file, second_file, format_name):
+def generate_diff(first_file, second_file, format_name="stylish"):
     sorted_output = sort_output(generate_difference(
         first_file, second_file))
     if format_name == "stylish":
