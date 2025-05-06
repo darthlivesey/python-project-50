@@ -6,14 +6,18 @@ from gendiff.scripts.generate_diff import (
 )
 from tests.test_data.test_values import (
     FIRST_LONG_FILE,
+    FIRST_LONG_FILEPATH,
     FIRST_SHORT_FILE,
+    FIRST_SHORT_FILEPATH,
     GENDIFF_LONG_RESULT,
     GENDIFF_SHORT_RESULT,
     LONG_SORTED_OUTPUT,
     PLAIN_LONG_RESULT,
     PLAIN_SHORT_RESULT,
     SECOND_LONG_FILE,
+    SECOND_LONG_FILEPATH,
     SECOND_SHORT_FILE,
+    SECOND_SHORT_FILEPATH,
     SHORT_SORTED_OUTPUT,
     STYLISH_LONG_RESULT,
     STYLISH_SHORT_RESULT,
@@ -21,22 +25,22 @@ from tests.test_data.test_values import (
 
 
 def test_main_stylish_long():
-    assert generate_diff(FIRST_LONG_FILE, SECOND_LONG_FILE,
+    assert generate_diff(FIRST_LONG_FILEPATH, SECOND_LONG_FILEPATH,
                  "stylish") == STYLISH_LONG_RESULT
     
 
 def test_main_stylish_short():
-    assert generate_diff(FIRST_SHORT_FILE, SECOND_SHORT_FILE,
+    assert generate_diff(FIRST_SHORT_FILEPATH, SECOND_SHORT_FILEPATH,
                  "stylish") == STYLISH_SHORT_RESULT
     
 
 def test_main_plain_long():
-    assert generate_diff(FIRST_LONG_FILE, SECOND_LONG_FILE,
+    assert generate_diff(FIRST_LONG_FILEPATH, SECOND_LONG_FILEPATH,
                  "plain") == PLAIN_LONG_RESULT
     
 
 def test_main_plain_short():
-    assert generate_diff(FIRST_SHORT_FILE, SECOND_SHORT_FILE,
+    assert generate_diff(FIRST_SHORT_FILEPATH, SECOND_SHORT_FILEPATH,
                  "plain") == PLAIN_SHORT_RESULT
 
 

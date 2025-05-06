@@ -1,3 +1,9 @@
+FIRST_SHORT_FILEPATH = "tests/test_data/file1.json"
+SECOND_SHORT_FILEPATH = "tests/test_data/file2.json"
+
+FIRST_LONG_FILEPATH = "tests/test_data/long_file1.json"
+SECOND_LONG_FILEPATH = "tests/test_data/long_file2.json"
+
 STYLISH_SHORT_RESULT = """{
   - follow: false
     host: hexlet.io
