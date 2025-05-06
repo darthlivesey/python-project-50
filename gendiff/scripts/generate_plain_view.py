@@ -1,8 +1,11 @@
 def format_input(input):
     for element in input:
-        if element[2] not in [
-            "null", "false", "true"] and type(element[2]) is not list:
-            element[2] = f"'{element[2]}'"
+        try:
+            element[2] = str(int(element[2]))
+        except (TypeError, ValueError):
+            if element[2] not in [
+                "null", "false", "true"] and type(element[2]) is not list:
+                element[2] = f"'{element[2]}'"
 
     return input
 

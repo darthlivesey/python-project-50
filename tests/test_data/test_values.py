@@ -72,7 +72,7 @@ Property 'group3' was added with value: [complex value]"""
 
 PLAIN_SHORT_RESULT = """Property 'follow' was removed
 Property 'proxy' was removed
-Property 'timeout' was updated. From '50' to '20'
+Property 'timeout' was updated. From 50 to 20
 Property 'verbose' was added with value: true"""
 
 FIRST_LONG_FILE = {'common': {
