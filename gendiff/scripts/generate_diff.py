@@ -17,7 +17,7 @@ def generate_diff(first_filepath, second_filepath, format_name="stylish"):
     elif format_name == "json":
         with open("json_format_result.json", "w") as jr:
             json.dump(generate_json_view(sorted_output), jr)
-        return generate_json_view(sorted_output)
+        return str(generate_json_view(sorted_output))
 
 
 def generate_difference(first_file: dict, second_file: dict):
